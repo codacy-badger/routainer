@@ -67,13 +67,20 @@
       <tr>
         <td>{{container.name}}</td>
         <td>{{container.domain}}</td>
-          {% if container.activity %}
+        {% if container.activity %}
         <td>Active</td>
         {% else %}
         <td>Down</td>
         {% endif %}
         <td>{{container.exposed_port}}</td>
-        <td></td>
+        <td>
+          {% if container.activity %}
+          <button type="button" class="btn btn-secondary">Shutdown</button>
+          {% else %}
+          <button type="button" class="btn btn-primary">Start</button>
+          {% endif %}
+          <button type="button" class="btn btn-danger">Delete</button>
+        </td>
       </tr>
       {% endfor %}
     </tbody>
