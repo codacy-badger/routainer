@@ -1,60 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Routainer | Container</title>
+  <title>Routainer | Container</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Routainer</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/container">Container <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/router">Router</a>
-            </li>
-        </div>
-      </nav>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Domain</th>
-            <th scope="col">Activity</th>
-            <th scope="col">Exposed Ports</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for container in container_list %}
-          <tr>
-            <td>{{container.name}}</td>
-            <td>{{container.domain}}</td>
-            <td>
-              {% if container.activity %}
-              <td>Active</td> 
-              {% else %}
-              <td>Down</td>
-              {% endif %}
-            </td>
-            <td>{{container.activity}}</td>
-            <td></td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Routainer</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/container">Container <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/router">Router</a>
+        </li>
+    </div>
+  </nav>
+  <form action="create" method="post">
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="col">
+        <input type="text" class="form-control" name="ContainerName" placeholder="Name" required>
+      </div>
+      <div class="col">
+        <input type="password" class="form-control" name="ContainerDomain" placeholder="Domain" required>
+      </div>
+      <div class="col">
+        <select class="form-control" name="ContainerPort" required>
+          <option value="" disable>Exposed Port</option>
+          <option value="default">Default</option>
+          <option value="none">None</option>
+        </select>
+      </div>
+      <div class="col">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </div>
+  </form>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Domain</th>
+        <th scope="col">Activity</th>
+        <th scope="col">Exposed Ports</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for container in container_list %}
+      <tr>
+        <td>{{container.name}}</td>
+        <td>{{container.domain}}</td>
+        <td>
+          {% if container.activity %}
+        <td>Active</td>
+        {% else %}
+        <td>Down</td>
+        {% endif %}
+        </td>
+        <td>{{container.activity}}</td>
+        <td></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 </body>
 </html>
