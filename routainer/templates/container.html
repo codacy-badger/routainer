@@ -38,7 +38,7 @@
         <input type="text" class="form-control" name="ContainerName" placeholder="Name" required>
       </div>
       <div class="col">
-        <input type="number" class="form-control" name="ContainerDomain" placeholder="Domain" required>
+        <input type="text" class="form-control" name="ContainerDomain" placeholder="Domain" required>
       </div>
       <div class="col">
         <select class="form-control" name="ContainerPort" required>
@@ -67,14 +67,12 @@
       <tr>
         <td>{{container.name}}</td>
         <td>{{container.domain}}</td>
-        <td>
           {% if container.activity %}
         <td>Active</td>
         {% else %}
         <td>Down</td>
         {% endif %}
-        </td>
-        <td>{{container.activity}}</td>
+        <td>{{container.exposed_port}}</td>
         <td></td>
       </tr>
       {% endfor %}
