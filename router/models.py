@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+
 class Router(models.Model):
     container_name = models.CharField(max_length=100)
     internal_port = models.IntegerField()
