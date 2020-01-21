@@ -39,6 +39,21 @@
           </tr>
         </thead>
         <tbody>
+          {% for container in container_list %}
+          <tr>
+            <td>{{container.name}}</td>
+            <td>{{container.domain}}</td>
+            <td>
+              {% if container.activity %}
+              <td>Active</td> 
+              {% else %}
+              <td>Down</td>
+              {% endif %}
+            </td>
+            <td>{{container.activity}}</td>
+            <td></td>
+          </tr>
+          {% endfor %}
         </tbody>
       </table>
 </body>

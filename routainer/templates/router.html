@@ -39,6 +39,15 @@
           </tr>
         </thead>
         <tbody>
+          {% for rule in rule_list %}
+          <tr>
+            <td>{{rule.container_name}}</td>
+            <td>{{rule.internal_port}}</td>
+            <td>{{rule.external_port}}</td>
+            <td>{{rule.port_type}}</td>
+            <td></td>
+          </tr>
+          {% endfor %}
         </tbody>
       </table>
 </body>
