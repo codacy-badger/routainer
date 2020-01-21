@@ -31,14 +31,14 @@
         </li>
     </div>
   </nav>
-  <form action="create" method="post">
+  <form action="create/" method="post">
     {% csrf_token %}
     <div class="form-row">
       <div class="col">
         <input type="text" class="form-control" name="RuleContainer" placeholder="Container" required>
       </div>
       <div class="col">
-        <input type="password" class="form-control" name="RulePort" placeholder="External" required>
+        <input type="number" class="form-control" name="RulePort" placeholder="External" required>
       </div>
       <div class="col">
         <div class="form-check">

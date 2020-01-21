@@ -31,14 +31,14 @@
         </li>
     </div>
   </nav>
-  <form action="create" method="post">
+  <form action="create/" method="post">
     {% csrf_token %}
     <div class="form-row">
       <div class="col">
         <input type="text" class="form-control" name="ContainerName" placeholder="Name" required>
       </div>
       <div class="col">
-        <input type="password" class="form-control" name="ContainerDomain" placeholder="Domain" required>
+        <input type="number" class="form-control" name="ContainerDomain" placeholder="Domain" required>
       </div>
       <div class="col">
         <select class="form-control" name="ContainerPort" required>
