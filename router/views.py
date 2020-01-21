@@ -12,4 +12,10 @@ def index(request):
 
 
 def create(request):
+    container = request.POST['RuleContainer']
+    port = request.POST['RulePort']
+    rule_type = request.POST['RuleType']
+
+    row = Router.create(container, port, rule_type)
+    row.save()
     return HttpResponseRedirect(reverse('router:index'))
