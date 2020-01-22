@@ -9,7 +9,7 @@ from router.models import Router
 def index(request):
     container_list = Container.objects.all()
     context = {'container_list': container_list}
-    return render(request, 'container.html', context)
+    return render(request, 'container/index.html', context)
 
 
 def create(request):

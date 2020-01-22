@@ -8,7 +8,7 @@ from .models import Router
 def index(request):
     rule_list = Router.objects.all()
     context = {'rule_list': rule_list}
-    return render(request, 'router.html', context)
+    return render(request, 'router/index.html', context)
 
 
 def create(request):
