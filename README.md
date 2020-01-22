@@ -9,17 +9,17 @@ Control panel for LXC container and NGINX proxy
 This project is intended to run on a clean installed CentOS 8.
 
 1. Enable EPEL repository for lxc
-```shell
+```console
 dnf install epel-release
 ```
 
 2. Install Python3, NGINX and LXC
-```shell
+```console
 dnf install python3 nginx lxc
 ```
 
 3. Enable and start the services
-```shell
+```console
 systemctl start lxc
 systemctl start nginx
 ```
