@@ -75,11 +75,11 @@
         <td>{{container.exposed_port}}</td>
         <td>
           {% if container.activity %}
-          <button type="button" class="btn btn-secondary">Shutdown</button>
+          <a class="btn btn-secondary" href="{{container.id}}/inactive/">Shutdown</a>
           {% else %}
-          <button type="button" class="btn btn-primary">Start</button>
+          <a class="btn btn-primary" href="{{container.id}}/active/">Start</a>
           {% endif %}
-          <button type="button" class="btn btn-danger">Delete</button>
+          <a class="btn btn-danger" href="{{container.id}}/delete/">Delete</a>
         </td>
       </tr>
       {% endfor %}

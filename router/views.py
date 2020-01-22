@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 
 from .models import Router
@@ -18,4 +18,10 @@ def create(request):
 
     row = Router.create(container, port, rule_type)
     row.save()
+    return HttpResponseRedirect(reverse('router:index'))
+
+
+def delete(request, rule_id):
+    rule = get_object_or_404(Router, pk=rule_id)
+    rule.delete()
     return HttpResponseRedirect(reverse('router:index'))
