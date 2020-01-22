@@ -1,7 +1,7 @@
 # routainer
 Control panel for LXC container and NGINX proxy
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/lssc/routainer/Python application)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/lssc/routainer/Python%20application)
 ![GitHub](https://img.shields.io/github/license/lssc/routainer)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/lssc/routainer)
 
