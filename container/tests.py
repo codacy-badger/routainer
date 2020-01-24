@@ -12,7 +12,7 @@ class ContainerModelTest(TestCase):
         c = Container.create(name="Test", domain="test.lssc.club", ports=default_ports)
         c.activate()
         self.assertIs(c.activity, True)
-        c.stop()
+        c.deactivate()
         self.assertIs(c.activity, False)
         c.destroy()
         self.assertIs(Container.objects.filter(name="Test").count(), 0)
