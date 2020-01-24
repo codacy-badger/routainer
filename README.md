@@ -15,7 +15,7 @@ dnf install epel-release
 
 2. Install Python3, NGINX and LXC
 ```console
-dnf install python3 nginx lxc
+dnf install python3 nginx lxc lxc-templates python36-lxc
 ```
 
 3. Enable and start the services
