@@ -13,8 +13,10 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: 3.6
-    - name: Update APT
-      run: sudo apt-get update
+    - name: Update packages
+      run: |
+        sudo apt-get update
+        sudo apt-get dist-upgrade -y
     - name: Set up LXC
       run: sudo apt-get install -y lxc lxc-templates python3-lxc
     - name: Install dependencies
