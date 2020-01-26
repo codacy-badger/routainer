@@ -6,8 +6,8 @@ class ContainerModelTest(TestCase):
 
     def test_container_operation(self):
         default_ports = {
-            'http': 80,
-            'stream': 22
+            'http': [80],
+            'stream': [22]
         }
         c = Container.create(name="Test", domain="test.lssc.club", ports=default_ports)
         c.activate()
