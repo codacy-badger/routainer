@@ -8,26 +8,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Update packages
-      run: |
-        sudo apt-get update
-        sudo apt-get dist-upgrade -y
+    - name: Checkout repository
+      uses: actions/checkout@master
+    - name: Update apt packages list
+      run: sudo apt-get update
     - name: Set up LXC
       run: sudo apt-get install -y lxc lxc-templates python3-lxc
-    - name: Install pip dependencies
+    - name: Install pip and Django
       run: |
         sudo apt-get install python3-pip
-        pip install --upgrade pip
-        pip install django
-    - name: Lint with flake8
-      run: |
-        pip install wheel
-        pip install flake8
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        python3 -m pip install --upgrade pip
+        pip3 install django
     - name: Test Django
       run: |
-        chmod +x ./manage.py
-        ./manage.py test
+        python3 ./manage.py test
