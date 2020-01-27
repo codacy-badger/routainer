@@ -16,12 +16,12 @@ def create(request):
     port = request.POST['RulePort']
     rule_type = request.POST['RuleType']
 
-    row = Router.create(container, port, rule_type)
-    row.save()
+    rule = Router.create(container, port, rule_type)
+    rule.applyAndReload()
     return HttpResponseRedirect(reverse('router:index'))
 
 
 def delete(request, rule_id):
     rule = get_object_or_404(Router, pk=rule_id)
-    rule.delete()
+    rule.destroyAndReload()
     return HttpResponseRedirect(reverse('router:index'))

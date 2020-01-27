@@ -1,5 +1,6 @@
 from django.db import models
 import socket
+import os
 
 
 class Router(models.Model):
@@ -17,3 +18,24 @@ class Router(models.Model):
         tcp.close()
 
         return cls(container_name=container, internal_port=internal_port, external_port=external_port, port_type=port_type)
+
+    def reload(self):
+        os.system('systemctl reload nginx')
+
+    def apply(self):
+        raise Exception('Method not available yet!')
+        self.save()
+
+    def applyAndReload(self):
+        raise Exception('Method not available yet!')
+        self.reload()
+        self.save()
+
+    def destroy(self):
+        raise Exception('Method not available yet!')
+        self.delete()
+
+    def destroyAndReload(self):
+        raise Exception('Method not available yet!')
+        self.reload()
+        self.delete()
