@@ -11,15 +11,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@master
-    - name: Enable EPEL repository
-      run: dnf install -y epel-release
-    - name: Set up LXC
-      run: dnf install -y lxc lxc-templates python3-lxc
-    - name: Install pip and Django
-      run: |
-        dnf install -y python3-pip
-        python3 -m pip install --upgrade pip
-        pip3 install django
+    - name: Install dependencies
+      run: sh ./install.sh
     - name: Test Django
-      run: |
-        python3 ./manage.py test
+      run: python3 ./manage.py test
