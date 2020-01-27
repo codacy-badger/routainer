@@ -6,17 +6,18 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    container: centos:8
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@master
-    - name: Update apt packages list
-      run: sudo apt-get update
+    - name: Enable EPEL repository
+      run: dnf install -y epel-release
     - name: Set up LXC
-      run: sudo apt-get install -y lxc lxc-templates python3-lxc
+      run: dnf install -y lxc lxc-templates python3-lxc
     - name: Install pip and Django
       run: |
-        sudo apt-get install python3-pip
+        dnf install -y python3-pip
         python3 -m pip install --upgrade pip
         pip3 install django
     - name: Test Django
